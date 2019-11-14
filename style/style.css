@@ -1,0 +1,27 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.calculator{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    width: 20rem;
+    height: 30rem;
+    background-color: aqua;
+}
+
+.display{
+    width: 90%;
+    height: 15%;
+    background-color: black;
+}
+
+.buttons{
+    width: 90%;
+    height: 75%;
+    background-color: blueviolet;
+}
