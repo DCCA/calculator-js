@@ -1,0 +1,26 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "Calculator app in JS",
+  "main": "calculator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DCCA/calculator-js.git"
+  },
+  "author": "Daniel Andrade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DCCA/calculator-js/issues"
+  },
+  "homepage": "https://github.com/DCCA/calculator-js#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-eslint": "^6.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-terser": "^1.2.0"
+  }
+}

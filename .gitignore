@@ -11,3 +11,7 @@ ehthumbs.db
 
 # Editor
 .vscode
+
+# Node
+node_modules
+npm-debug.log
