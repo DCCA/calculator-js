@@ -32,6 +32,7 @@ gulp.task('reload', function(done) {
 gulp.task("watch", function() {
     gulp.watch(["js/*.js", './js/parcials/*.js'], gulp.series("script" , "reload"));
     gulp.watch("./*.html", gulp.series("reload"));
+    gulp.watch("./style/*.css", gulp.series("reload"));
 });
 
 gulp.task('default', gulp.parallel('browser-sync', 'script','watch'));

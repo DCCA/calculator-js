@@ -5,9 +5,9 @@ export default class Button {
     }
     create(buttonSection){
         let buttonSec = buttonSection;
-        let newButton = document.createElement("button");
+        let newButton = document.createElement('button');
         newButton.innerText = this.value;
-        newButton.setAttribute("class", this.classBtn);
+        newButton.setAttribute('class', this.classBtn);
         buttonSec[0].appendChild(newButton);
     }
   }
