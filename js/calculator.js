@@ -1,64 +1,82 @@
 import Buttons from '../build/Buttons.min.js'
 
-let displayNum = 0;
-let prevValue = 0;
-let nextValue = 0;
+let displayValue = 0;
+let firstValue = 0;
+let secondValue = 0;
+var arrOpe = [];
 const displayCalcu = document.querySelector('.display-number');
 
 start();
-display(displayNum);
+display(displayValue);
 
-function click(){
-    if(this.className === 'numbers'){
-        let num = this.innerText
-        prevValue = prevValue + num;
-        prevValue = parseInt(prevValue, 10);
-        display(prevValue);
-    }
-    // If operators
-    if(this.className === 'operation'){
-        let runApp = {
-            sum: function(nextValue, prevValue) { return prevValue + nextValue },
-            sub: function(nextValue, prevValue) { return prevValue - nextValue },
-            mul: function(nextValue, prevValue) { return prevValue * nextValue },
-            div: function(nextValue, prevValue) { return prevValue / nextValue },
-            eq: function(nextValue) { return nextValue }
-        };
-        // Store operator
-        let ope = this.innerText;
-        // Execute the operation
-        if(ope === '+'){
-            let result = runApp.sum(nextValue, prevValue);
-            display(result);
-            console.log('re ' + result);
-            console.log('pv ' + prevValue);
-            console.log('nv ' + nextValue);
-            nextValue = result;
-            prevValue = '';
+function click() {
+    let clicked = this;
+    console.log(clicked);
+    if (clicked.className === 'numbers') {
+        if(firstValue === 0){
+            firstValue = '';
+            console.log(clicked.className);
+            firstValue = firstValue + clicked.innerText
+            display(firstValue);
+        } else{
+            console.log(clicked.className);
+            firstValue = firstValue + clicked.innerText
+            display(firstValue);
         }
-        if(ope === '='){
-            let result = runApp.eq(nextValue);
-            display(result);
-            console.log('re ' + result);
-            console.log('pv ' + prevValue);
-            console.log('nv ' + nextValue);
-            nextValue = result;
-            prevValue = '';
-        }
-        // Set prevNumber to 0
-        // prevValue = 0;
     }
-    // If point
-    // If others
+    if (clicked.className === 'point') {
+        // firstValue = firstValue.toString(10)
+        if(firstValue === 0){
+            firstValue = '';
+            let check = firstValue.includes('.') 
+            if (!check) {
+                console.log(clicked.className);
+                firstValue = firstValue + clicked.innerText
+                display(firstValue);
+            }
+        } else {
+            let check = firstValue.includes('.') 
+            if (!check) {
+                console.log(clicked.className);
+                firstValue = firstValue + clicked.innerText
+                display(firstValue);
+            }
+        }
+    }
+    if (clicked.className === 'operation') {
+        let opeSign = clicked.innerText;
+        if (opeSign !== '=') {
+            arrOpe.push(firstValue);
+            arrOpe.push(opeSign);
+            firstValue = 0;
+            console.log(arrOpe);
+        } else {
+            arrOpe.push(firstValue);
+            firstValue = 0;
+            let result = eval(arrOpe.join(' '));
+            console.log(arrOpe);
+            console.log(result);
+            display(result);
+            arrOpe = [];
+        }
+    }
+    if (clicked.className === 'other') {
+        let sign = clicked.innerText;
+        if (sign === 'C') {
+            firstValue = 0;
+            arrOpe = [];
+            display(firstValue);
+        }
+    }
 }
 
-function display(num){
+// Create calculator
+function display(num) {
     displayCalcu.innerText = num;
 }
-
-function start(){
+function start() {
     // Create number buttons
-    for(let i = 0; i < 10; i++){
+    for (let i = 0; i < 10; i++) {
         let numbers = 9 - i;
         let button = new Buttons('numbers', numbers);
         const buttonsSection = document.getElementsByClassName('numbers');
@@ -68,22 +86,22 @@ function start(){
     const buttonsSection = document.getElementsByClassName('numbers');
     button.create(buttonsSection);
     // Generate operation buttons
-    let operations = ['+', '-', '*' , '/', '='];
-    for(let i = 0; i < operations.length; i++){
+    let operations = ['+', '-', '*', '/', '='];
+    for (let i = 0; i < operations.length; i++) {
         let button = new Buttons('operation', operations[i]);
         const buttonsSection = document.getElementsByClassName('operators');
         button.create(buttonsSection);
     }
     // Generate other buttons
     let otherBtn = ['C', '+/-', '%'];
-    for(let i = 0; i < otherBtn.length; i++){
-        let button = new Buttons('operation', otherBtn[i]);
+    for (let i = 0; i < otherBtn.length; i++) {
+        let button = new Buttons('other', otherBtn[i]);
         const buttonsSection = document.getElementsByClassName('others');
         button.create(buttonsSection);
     }
     // Add event listeners
     const buttons = document.querySelectorAll('button');
-    for(let i = 0; i < buttons.length; i++){
+    for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', click);
     }
 }
