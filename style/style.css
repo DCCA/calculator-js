@@ -1,6 +1,21 @@
+html, 
+body {
+    height: 100%;
+}
+
 body{
     display: flex;
     justify-content: center;
+    font-family: 'Economica', sans-serif;
+    background: linear-gradient(70deg, #F2762E 20%, #0D0D0D 80%);
+    height: 100%;
+    width: 100%;
+}
+
+h1{
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
 .calculator{
@@ -9,28 +24,54 @@ body{
     justify-content: center;
     align-items: center;
     margin-top: 1em;
-    width: 20rem;
-    height: 30rem;
-    background-color: aqua;
+    width: 30rem;
+    height: 40rem;
+    background-color:#cacacc;
+    border: #F0F0F2 2px solid;
+    padding: 1rem 0 2rem 0;
+    border-radius: 1rem;
 }
 
 .display{
-    width: 90%;
+    width: 89%;
     height: 20%;
     background-color: black;
     color: white;
-    font-size: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: #fff 2px solid;
+    border-radius: 0.4rem;
+    margin-bottom: 0.5rem;
 }
 
 .display p{
     color: white;
-    font-size: 3.5rem;
+    font-size: 6rem;
     margin: 1rem;
     text-align: right;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scrollbar-width: thin;
 }
+
+ .display p::-webkit-scrollbar-track
+ {
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+     background-color: #F5F5F5;
+ }
+ 
+ .display p::-webkit-scrollbar
+ {
+     height: 0.2rem;
+     background-color: #F5F5F5;
+ }
+ 
+ .display p::-webkit-scrollbar-thumb
+ {
+     background-color: #000000;
+     border: 2px solid #555555;
+ }
 
 .buttons{
     width: 90%;
@@ -40,28 +81,34 @@ body{
     flex-wrap: wrap;
 }
 
+button:hover{
+    font-weight: 900;
+}
+
 .numbers{
     width: 75%;
     height: 80%;
 }
 
 .numbers button{
-    width: 33.333%;
+    width: 33.3333%;
     height: 25%;
     border: #fff 2px solid;
     box-shadow: 0px 0px 0px #fff;
-    background: #e0e0e7
+    background: #e0e0e7;
+    font-size: 2rem;
+    font-family: 'Economica', sans-serif;
 }
 
 .numbers button:nth-child(10){
-    width: 66.66%;
+    width: 66.6666%;
     height: 25%;
+    border-bottom-left-radius: 0.4rem;
 }
 
 .operators{
     width: 25%;
     height: 80%;
-    background-color: chartreuse;
 }
 
 .operators button{
@@ -70,6 +117,16 @@ body{
     border: #fff 2px solid;
     box-shadow: 0px 0px 0px #fff;
     background:  linear-gradient(to bottom, rgba(252,156,23,1) 0%, rgba(247,126,27,1) 100%);
+    font-family: 'Economica', sans-serif;
+    font-size: 2rem;
+}
+
+.operators button:nth-child(1){
+    border-top-right-radius: 0.4rem;
+}
+
+.operators button:nth-child(5){
+    border-bottom-right-radius: 0.4rem;
 }
 
 .others{
@@ -78,9 +135,12 @@ body{
 }
 
 .others button{
-    width: 33.33%;
+    width: 100%;
     height: 100%;
     border: #fff 2px solid;
     box-shadow: 0px 0px 0px #fff;
     background: linear-gradient(to bottom, rgba(202,202,204,1) 0%, rgba(196,194,204,1) 100%);
+    font-family: 'Economica', sans-serif;
+    font-size: 2rem;
+    border-top-left-radius: 0.4rem;
 }

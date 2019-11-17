@@ -92,8 +92,8 @@ function start() {
         const buttonsSection = document.getElementsByClassName('operators');
         button.create(buttonsSection);
     }
-    // Generate other buttons
-    let otherBtn = ['C', '+/-', '%'];
+    // Generate other buttons. Add '+/-', '%'
+    let otherBtn = ['C']; 
     for (let i = 0; i < otherBtn.length; i++) {
         let button = new Buttons('other', otherBtn[i]);
         const buttonsSection = document.getElementsByClassName('others');
